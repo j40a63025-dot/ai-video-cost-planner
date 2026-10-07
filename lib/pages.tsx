@@ -159,6 +159,8 @@ export function renderSlug(l: Locale, slug: string) {
   notFound();
 }
 
+const TOOL_IMG: Record<string, string> = { compare: "tool-calculator", veo: "tool-veo", kling: "tool-kling", budget: "tool-budget", subapi: "compare" };
+
 export function Home({ l }: { l: Locale }) {
   const t = UI[l];
   const ld = { "@context": "https://schema.org", "@type": "WebSite", name: SITE_NAME, url: abs(path(l)), inLanguage: l, description: t.heroSub };
@@ -166,7 +168,8 @@ export function Home({ l }: { l: Locale }) {
     <Shell locale={l} altHref={path(l === "en" ? "es" : "en")}>
       <JsonLd data={ld} />
       <section className="hero-stage mt-2 p-6 sm:p-12">
-        {/* TODO: <img src="/img/hero.webp" className="hero-img" alt="" aria-hidden /> cuando estén las imágenes de Flow */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/img/hero.webp" alt="" aria-hidden width={1376} height={768} fetchPriority="high" className="hero-img" />
         <div className="relative z-10">
           <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan"><span className="rec-dot" aria-hidden /> LIVE · {t.pricesUpdated}: {fmtDate(l)}</div>
           <h1 className="neon-text mt-5 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">{t.heroTitle}</h1>
@@ -181,11 +184,13 @@ export function Home({ l }: { l: Locale }) {
       </section>
       <section aria-label={t.tools} className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {TOOL_IDS.map((id, i) => (
-          <Link key={id} href={toolPath(l, id)} className={`glass group block p-5 transition hover:-translate-y-0.5 hover:border-accent/60 ${i === 0 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
-            <div className="text-xs font-semibold uppercase tracking-widest text-accent">{String(i + 1).padStart(2, "0")}</div>
+          <Link key={id} href={toolPath(l, id)} className={`glass group block overflow-hidden transition hover:-translate-y-0.5 hover:border-accent/60 ${i === 0 ? "sm:col-span-2 lg:col-span-1" : ""}`}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/img/${TOOL_IMG[id]}.webp`} alt="" aria-hidden width={1376} height={768} loading="lazy" className="h-32 w-full object-cover opacity-80 transition group-hover:opacity-100" />
+            <div className="p-5"><div className="text-xs font-semibold uppercase tracking-widest text-accent">{String(i + 1).padStart(2, "0")}</div>
             <h2 className="mt-2 text-xl font-semibold">{TOOLS[id][l].h1}</h2>
             <p className="mt-2 text-sm text-muted">{TOOLS[id][l].blurb}</p>
-            <span className="mt-4 inline-block text-sm text-accent2 group-hover:underline">{t.openTool} →</span>
+            <span className="mt-4 inline-block text-sm text-accent2 group-hover:underline">{t.openTool} →</span></div>
           </Link>
         ))}
       </section>
