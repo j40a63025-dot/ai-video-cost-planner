@@ -7,6 +7,7 @@ import { BLOG_UI } from "./blog-ui";
 import { abs, fmtDate, JsonLd, metaFor, Sources } from "./pages";
 import { Shell } from "@/components/Shell";
 import { AdSlot } from "@/components/AdSlot";
+import { Banner, BLOG_IMGS } from "@/components/ui";
 
 export const blogSlugs = (l: Locale) => POSTS.map((p) => ({ slug: p.slug[l] }));
 
@@ -28,14 +29,17 @@ export function BlogIndex({ l }: { l: Locale }) {
   const alt = path(l === "en" ? "es" : "en", "blog");
   return (
     <Shell locale={l} altHref={alt}>
-      <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{t.blogTitle}</h1>
-      <p className="mt-3 max-w-2xl text-muted">{t.blogSub}</p>
+      <Banner img="texture" kicker="BLOG" title={t.blogTitle}><p className="mt-4 max-w-2xl text-[#c3c7d8]">{t.blogSub}</p></Banner>
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        {POSTS.map((p) => (
-          <Link key={p.id} href={path(l, `blog/${p.slug[l]}`)} className="glass block p-5 transition hover:-translate-y-0.5 hover:border-accent/60">
-            <h2 className="text-lg font-semibold">{p.content[l].title}</h2>
-            <p className="mt-2 text-sm text-muted">{p.content[l].description}</p>
-            <span className="mt-3 inline-block text-sm text-accent2">{t.readArticle} →</span>
+        {POSTS.map((p, i) => (
+          <Link key={p.id} href={path(l, `blog/${p.slug[l]}`)} className="glass group block overflow-hidden transition hover:-translate-y-0.5 hover:border-accent/60">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/img/${BLOG_IMGS[i % BLOG_IMGS.length]}.webp`} alt="" aria-hidden width={1376} height={768} loading="lazy" className="h-36 w-full object-cover opacity-80 transition group-hover:opacity-100" />
+            <div className="p-5">
+              <h2 className="text-lg font-semibold">{p.content[l].title}</h2>
+              <p className="mt-2 text-sm text-muted">{p.content[l].description}</p>
+              <span className="mt-3 inline-block text-sm text-accent2">{t.readArticle} →</span>
+            </div>
           </Link>
         ))}
       </div>
@@ -60,8 +64,7 @@ export function BlogPost({ l, slug }: { l: Locale; slug: string }) {
       <JsonLd data={ld} />
       <article className="max-w-3xl">
         <p className="text-sm"><Link href={path(l, "blog")} className="text-accent2 hover:underline">← {t.blog}</Link></p>
-        <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{c.title}</h1>
-        <p className="mt-3 text-sm text-muted"><span className="rounded-full border border-accent2/40 px-3 py-1 text-accent2">{t.published}: {fmtDate(l)}</span></p>
+        <div className="mt-3"><Banner img={BLOG_IMGS[POSTS.indexOf(p) % BLOG_IMGS.length]} kicker={<>{t.published}: {fmtDate(l)}</>} title={c.title} /></div>
         <div className="prose-site mt-6">
           {c.intro.map((x) => <p key={x} className="mb-3">{x}</p>)}
           <p className="mb-3"><Link href={toolPath(l, p.tool)}>{t.tryCalc}: {TOOLS[p.tool][l].h1} →</Link></p>

@@ -27,7 +27,7 @@ export function Stat({ label, value, sub, accent }: { label: string; value: stri
   return (
     <div className={`glass p-4 ${accent ? "ring-1 ring-accent/50" : ""}`}>
       <div className="text-xs uppercase tracking-wide text-muted">{label}</div>
-      <div className={`mt-1 text-2xl font-bold tabular-nums sm:text-3xl ${accent ? "text-accent2" : ""}`}>{value}</div>
+      <div className={`mt-1 text-2xl font-bold tabular-nums sm:text-3xl ${accent ? "neon-text" : ""}`}>{value}</div>
       {sub && <div className="mt-0.5 text-xs text-muted">{sub}</div>}
     </div>
   );
@@ -49,5 +49,22 @@ export function Segmented<T extends string>({ value, onChange, options }: { valu
           className={`btn ${value === o.value ? "btn-primary" : ""}`}>{o.label}</button>
       ))}
     </div>
+  );
+}
+
+export const BLOG_IMGS = ["blog-time", "paths", "steps", "compare", "texture"];
+
+/** Dark "control room" banner with a Flow image behind the page title. */
+export function Banner({ img, kicker, title, children }: { img: string; kicker?: ReactNode; title: ReactNode; children?: ReactNode }) {
+  return (
+    <header className="hero-stage p-6 sm:p-10">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={`/img/${img}.webp`} alt="" aria-hidden width={1376} height={768} fetchPriority="high" className="hero-img" />
+      <div className="relative z-10">
+        {kicker && <div className="font-mono text-xs uppercase tracking-[0.2em] text-cyan">{kicker}</div>}
+        <h1 className="neon-text mt-3 max-w-3xl text-3xl font-bold leading-tight tracking-tight sm:text-5xl">{title}</h1>
+        {children}
+      </div>
+    </header>
   );
 }

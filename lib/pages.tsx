@@ -8,6 +8,7 @@ import { ALL_SOURCES, COVERAGE_NOTES, DISCLAIMER, PRICES_UPDATED_AT } from "./ca
 import { Shell } from "@/components/Shell";
 import { AdSlot } from "@/components/AdSlot";
 import { Tool } from "@/components/tools";
+import { Banner } from "@/components/ui";
 import { ContactForm } from "@/components/ContactForm";
 import { POSTS } from "./blog";
 import { BLOG_UI } from "./blog-ui";
@@ -92,6 +93,8 @@ export function MoreTools({ l, current }: { l: Locale; current?: ToolId }) {
   );
 }
 
+const TOOL_IMG: Record<string, string> = { compare: "tool-calculator", veo: "tool-veo", kling: "tool-kling", budget: "tool-budget", subapi: "compare" };
+
 function ToolPage({ l, id }: { l: Locale; id: ToolId }) {
   const t = UI[l]; const c = TOOLS[id][l];
   const url = abs(toolPath(l, id));
@@ -103,12 +106,10 @@ function ToolPage({ l, id }: { l: Locale; id: ToolId }) {
     <Shell locale={l} altHref={toolPath(l === "en" ? "es" : "en", id)}>
       <JsonLd data={ld} />
       <article>
-        <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">{c.h1}</h1>
-        <p className="mt-3 max-w-2xl text-muted">{c.lead}</p>
-        <p className="mt-3 text-sm text-muted">
-          <span className="rounded-full border border-accent2/40 px-3 py-1 text-accent2">{t.pricesUpdated}: {fmtDate(l)}</span>{" "}
-          <a href="#sources" className="underline underline-offset-4">{t.sources}</a>
-        </p>
+        <Banner img={TOOL_IMG[id]} kicker={<>CALC · {t.pricesUpdated}: {fmtDate(l)}</>} title={c.h1}>
+          <p className="mt-4 max-w-2xl text-[#c3c7d8]">{c.lead}</p>
+          <p className="mt-4 text-sm"><a href="#sources" className="text-accent2 underline underline-offset-4">{t.sources}</a></p>
+        </Banner>
         <div className="mt-6"><Tool id={id} locale={l} /></div>
         <AdSlot locale={l} />
         <div className="prose-site">
@@ -158,8 +159,6 @@ export function renderSlug(l: Locale, slug: string) {
   if ((INFO_IDS as readonly string[]).includes(slug)) return <InfoPage l={l} id={slug as InfoId} />;
   notFound();
 }
-
-const TOOL_IMG: Record<string, string> = { compare: "tool-calculator", veo: "tool-veo", kling: "tool-kling", budget: "tool-budget", subapi: "compare" };
 
 export function Home({ l }: { l: Locale }) {
   const t = UI[l];
