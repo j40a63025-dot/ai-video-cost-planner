@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #07080d;
+  --color-panel: #0e1018;
+  --color-line: rgba(255, 255, 255, 0.09);
+  --color-accent: #8b7cff;
+  --color-accent2: #38e1c6;
+  --color-muted: #9aa0b4;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html { color-scheme: dark; scroll-behavior: smooth; }
+body {
+  background: var(--color-ink);
+  color: #eceef7;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(60rem 30rem at 15% -10%, rgba(139, 124, 255, 0.18), transparent 60%),
+    radial-gradient(50rem 28rem at 95% 0%, rgba(56, 225, 198, 0.12), transparent 60%);
+  background-repeat: no-repeat;
+}
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0.025));
+  border: 1px solid var(--color-line);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 1.1rem;
+}
+.field {
+  width: 100%; min-height: 2.75rem; padding: 0.55rem 0.8rem; border-radius: 0.7rem;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--color-line); color: inherit; font-size: 1rem;
+}
+.field:focus { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+select.field option { background: #12141d; color: #eceef7; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 2.5rem;
+  padding: 0.5rem 1rem; border-radius: 0.75rem; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+  border: 1px solid var(--color-line); background: rgba(255,255,255,0.06); color: inherit; transition: background .15s, transform .15s;
+}
+.btn:hover { background: rgba(255,255,255,0.11); }
+.btn-primary { background: linear-gradient(135deg, #8b7cff, #5b8cff); border-color: transparent; color: #fff; }
+.btn-primary:hover { background: linear-gradient(135deg, #9c8fff, #6c9aff); }
+.prose-site p, .prose-site li { color: #c3c7d8; line-height: 1.7; }
+.prose-site h2 { font-size: 1.35rem; font-weight: 700; margin: 2rem 0 0.75rem; }
+.prose-site h3 { font-size: 1.05rem; font-weight: 600; margin: 1.25rem 0 0.4rem; }
+.prose-site a { color: var(--color-accent2); text-decoration: underline; text-underline-offset: 3px; }
+.prose-site ul { list-style: disc; padding-left: 1.2rem; }
+.formula { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: rgba(139,124,255,.10); border: 1px solid rgba(139,124,255,.3); border-radius: .75rem; padding: .8rem 1rem; overflow-x: auto; white-space: nowrap; color: #ddd8ff; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

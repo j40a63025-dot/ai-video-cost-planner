@@ -1,0 +1,60 @@
+{
+  "updatedAt": "2026-10-01",
+  "currency": "USD",
+  "disclaimer": "Prices are collected from public pages and may change without notice. Entries marked 'secondary' were read through a third-party aggregator because the official page did not render to our fetcher; the official URL is still listed as the source of record.",
+  "apiModels": [
+    { "id": "veo-3.1", "provider": "Google", "family": "Veo", "name": "Veo 3.1", "prices": { "720p": 0.40, "1080p": 0.40, "4K": 0.60 }, "source": "https://ai.google.dev/gemini-api/docs/pricing", "readVia": "https://benchlm.ai/md/media-pricing/veo.md", "sourceReadAt": "2026-09-11", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Gemini API, USD per second of generated video. Runway resells Veo 3.1 at $0.40/s with audio and $0.20/s without." },
+    { "id": "veo-3.1-fast", "provider": "Google", "family": "Veo", "name": "Veo 3.1 Fast", "prices": { "720p": 0.10, "1080p": 0.12, "4K": 0.30 }, "source": "https://ai.google.dev/gemini-api/docs/pricing", "readVia": "https://benchlm.ai/md/media-pricing/veo.md", "sourceReadAt": "2026-09-11", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Gemini API, USD per second." },
+    { "id": "veo-3.1-lite", "provider": "Google", "family": "Veo", "name": "Veo 3.1 Lite", "prices": { "720p": 0.05, "1080p": 0.08 }, "source": "https://ai.google.dev/gemini-api/docs/pricing", "readVia": "https://benchlm.ai/md/media-pricing/veo.md", "sourceReadAt": "2026-09-11", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Gemini API, USD per second. No 4K tier published." },
+    { "id": "sora-2", "provider": "OpenAI", "family": "Sora", "name": "Sora 2", "prices": { "720p": 0.10 }, "source": "https://platform.openai.com/docs/pricing", "readVia": "https://benchlm.ai/md/media-pricing/sora.md", "sourceReadAt": "2026-09-11", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Standard (non-batch) API rate. Batch is 50% lower." },
+    { "id": "sora-2-pro", "provider": "OpenAI", "family": "Sora", "name": "Sora 2 Pro", "prices": { "720p": 0.30, "1080p": 0.70 }, "source": "https://platform.openai.com/docs/pricing", "readVia": "https://benchlm.ai/md/media-pricing/sora.md", "sourceReadAt": "2026-09-11", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Standard API rate. A 1024p tier is also listed at $0.50/s. Batch is 50% lower." },
+    { "id": "runway-gen4.5", "provider": "Runway", "family": "Runway", "name": "Runway Gen-4.5", "prices": { "720p": 0.12 }, "source": "https://docs.dev.runwayml.com/guides/pricing/", "sourceReadAt": "2026-10-01", "updatedAt": "2026-10-01", "confidence": "official", "notes": "12 credits/s at $0.01 per API credit." },
+    { "id": "runway-gen4-turbo", "provider": "Runway", "family": "Runway", "name": "Runway Gen-4 Turbo", "prices": { "720p": 0.05 }, "source": "https://docs.dev.runwayml.com/guides/pricing/", "sourceReadAt": "2026-10-01", "updatedAt": "2026-10-01", "confidence": "official", "notes": "5 credits/s at $0.01 per API credit." },
+    { "id": "kling-3-std", "provider": "Kling", "family": "Kling", "name": "Kling 3.0 Standard", "prices": { "720p": 0.084 }, "pricesAudio": { "720p": 0.112 }, "source": "https://kling.ai/dev/pricing", "readVia": "https://costbench.com/software/ai-media-apis/kling-api/", "sourceReadAt": "2026-08-18", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Kling developer API, USD per second. Silent vs native audio priced separately." },
+    { "id": "kling-3-pro", "provider": "Kling", "family": "Kling", "name": "Kling 3.0 Pro", "prices": { "1080p": 0.112 }, "pricesAudio": { "1080p": 0.14 }, "source": "https://kling.ai/dev/pricing", "readVia": "https://costbench.com/software/ai-media-apis/kling-api/", "sourceReadAt": "2026-08-18", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Kling developer API, USD per second." },
+    { "id": "kling-3-4k", "provider": "Kling", "family": "Kling", "name": "Kling 3.0 4K", "prices": { "4K": 0.42 }, "source": "https://kling.ai/dev/pricing", "readVia": "https://costbench.com/software/ai-media-apis/kling-api/", "sourceReadAt": "2026-08-18", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Kling developer API, same rate with or without audio." },
+    { "id": "luma-ray-3.2", "provider": "Luma", "family": "Luma", "name": "Luma Ray 3.2", "prices": { "720p": 0.06, "1080p": 0.24 }, "source": "https://lumalabs.ai/api/pricing", "sourceReadAt": "2026-10-01", "updatedAt": "2026-10-01", "confidence": "official", "notes": "Published per 5-second block: 540p $0.15, 720p $0.30, 1080p $1.20 (T2V/I2V); divided by 5 here. HDR is 2x." }
+  ],
+  "plans": [
+    { "id": "runway-standard", "provider": "Runway", "name": "Standard", "monthly": 15, "annualMonthly": 12, "credits": 625, "source": "https://runway.com/pricing", "updatedAt": "2026-10-01" },
+    { "id": "runway-pro", "provider": "Runway", "name": "Pro", "monthly": 35, "annualMonthly": 28, "credits": 2250, "source": "https://runway.com/pricing", "updatedAt": "2026-10-01" },
+    { "id": "runway-max", "provider": "Runway", "name": "Max", "monthly": 95, "annualMonthly": 76, "credits": 9500, "source": "https://runway.com/pricing", "updatedAt": "2026-10-01" },
+    { "id": "luma-plus", "provider": "Luma", "name": "Plus", "monthly": 30, "annualMonthly": 25, "credits": 10000, "source": "https://lumalabs.ai/pricing", "updatedAt": "2026-10-01" },
+    { "id": "luma-pro", "provider": "Luma", "name": "Pro", "monthly": 90, "annualMonthly": 75, "credits": 40000, "source": "https://lumalabs.ai/pricing", "updatedAt": "2026-10-01" },
+    { "id": "luma-ultra", "provider": "Luma", "name": "Ultra", "monthly": 300, "annualMonthly": 250, "credits": 150000, "source": "https://lumalabs.ai/pricing", "updatedAt": "2026-10-01" },
+    { "id": "pika-starter", "provider": "Pika", "name": "Starter", "monthly": 10, "annualMonthly": 8, "credits": 900, "source": "https://pika.art/pricing", "updatedAt": "2026-10-01", "notes": "Annual = 20% off as published. Top-ups: 60 credits per $1." },
+    { "id": "pika-creator", "provider": "Pika", "name": "Creator", "monthly": 35, "annualMonthly": 28, "credits": 3150, "source": "https://pika.art/pricing", "updatedAt": "2026-10-01" },
+    { "id": "higgsfield-starter", "provider": "Higgsfield", "name": "Starter", "monthly": null, "annualMonthly": 19, "credits": 270, "source": "https://higgsfield.ai/pricing", "readVia": "https://creatify.ai/blog/higgsfield-pricing-(2026)-plans-and-what-you-ll-actually-pay", "sourceReadAt": "2026-08-19", "updatedAt": "2026-10-01", "confidence": "secondary" },
+    { "id": "higgsfield-plus", "provider": "Higgsfield", "name": "Plus", "monthly": 59, "annualMonthly": 47, "credits": 1200, "source": "https://higgsfield.ai/pricing", "readVia": "https://creatify.ai/blog/higgsfield-pricing-(2026)-plans-and-what-you-ll-actually-pay", "sourceReadAt": "2026-08-19", "updatedAt": "2026-10-01", "confidence": "secondary" },
+    { "id": "higgsfield-ultra", "provider": "Higgsfield", "name": "Ultra", "monthly": 129, "annualMonthly": 99, "credits": 3000, "source": "https://higgsfield.ai/pricing", "readVia": "https://creatify.ai/blog/higgsfield-pricing-(2026)-plans-and-what-you-ll-actually-pay", "sourceReadAt": "2026-08-19", "updatedAt": "2026-10-01", "confidence": "secondary" },
+    { "id": "kling-standard", "provider": "Kling", "name": "Standard", "monthly": 10, "annualMonthly": null, "credits": null, "source": "https://www.cloudzero.com/blog/kling-ai-pricing/", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Monthly credit allowance not confirmed; plan list prices only: Standard $10, Pro $37, Premier $92, Ultra $180." }
+  ],
+  "creditModels": [
+    { "id": "pika-wan-3", "provider": "Pika", "name": "Pika · Wan 3.0 (credits)", "planId": "pika-starter", "creditsPerClip": { "720p": 33 }, "clipSeconds": 5, "source": "https://pika.art/pricing", "sourceReadAt": "2026-10-01", "updatedAt": "2026-10-01", "confidence": "official" },
+    { "id": "pika-seedance-2.5", "provider": "Pika", "name": "Pika · Seedance 2.5 (credits)", "planId": "pika-starter", "creditsPerClip": { "720p": 122 }, "clipSeconds": 5, "source": "https://pika.art/pricing", "sourceReadAt": "2026-10-01", "updatedAt": "2026-10-01", "confidence": "official" },
+    { "id": "higgsfield-seedance-2.0", "provider": "Higgsfield", "name": "Higgsfield · Seedance 2.0 (credits)", "planId": "higgsfield-plus", "creditsPerClip": { "720p": 23, "1080p": 45 }, "clipSeconds": 5, "source": "https://higgsfield.ai/pricing", "readVia": "https://creatify.ai/blog/higgsfield-pricing-(2026)-plans-and-what-you-ll-actually-pay", "sourceReadAt": "2026-08-19", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Published as ~22-23 credits (720p) and ~45 credits (1080p) per 5 s; upper bound used. Rate valued at Plus annual price per credit." },
+    { "id": "higgsfield-kling-3", "provider": "Higgsfield", "name": "Higgsfield · Kling 3.0 (credits)", "planId": "higgsfield-plus", "creditsPerClip": { "720p": 10 }, "clipSeconds": 5, "source": "https://higgsfield.ai/pricing", "readVia": "https://creatify.ai/blog/higgsfield-pricing-(2026)-plans-and-what-you-ll-actually-pay", "sourceReadAt": "2026-08-19", "updatedAt": "2026-10-01", "confidence": "secondary", "notes": "Published as 7-10 credits per 5 s at 720p; upper bound used." }
+  ],
+  "planCreditCosts": [
+    { "id": "runway-gen4.5", "provider": "Runway", "name": "Runway Gen-4.5", "creditsPerSecond": 12, "apiModelId": "runway-gen4.5", "source": "https://docs.dev.runwayml.com/guides/pricing/" },
+    { "id": "runway-gen4-turbo", "provider": "Runway", "name": "Runway Gen-4 Turbo", "creditsPerSecond": 5, "apiModelId": "runway-gen4-turbo", "source": "https://docs.dev.runwayml.com/guides/pricing/" },
+    { "id": "luma-ray-3.2-1080p", "provider": "Luma", "name": "Luma Ray 3.2 · 1080p", "creditsPerSecond": 80, "apiModelId": "luma-ray-3.2", "apiRes": "1080p", "source": "https://lumalabs.ai/pricing" }
+  ],
+  "klingCredits": {
+    "topUpUsdPerCredit": 0.015151515,
+    "topUpNote": "Published top-up rate: $1 per 66 credits.",
+    "rates": [
+      { "id": "720-silent", "label": "720p · no audio", "creditsPerSecond": 6, "apiModelId": "kling-3-std", "audio": false, "res": "720p" },
+      { "id": "1080-audio", "label": "1080p · native audio", "creditsPerSecond": 12, "apiModelId": "kling-3-pro", "audio": true, "res": "1080p" },
+      { "id": "4k", "label": "4K", "creditsPerSecond": 30, "apiModelId": "kling-3-4k", "audio": false, "res": "4K" }
+    ],
+    "source": "https://www.cloudzero.com/blog/kling-ai-pricing/",
+    "updatedAt": "2026-10-01",
+    "confidence": "secondary"
+  },
+  "coverageNotes": [
+    "Higgsfield and Pika publish credit-based subscription pricing; we did not find public per-second API rates for them, so they appear as effective subscription rates.",
+    "Veo is priced from the Gemini API (Veo on Vertex AI or inside Google AI plans may differ).",
+    "Taxes, free tiers, batch discounts, and enterprise contracts are not included."
+  ]
+}
