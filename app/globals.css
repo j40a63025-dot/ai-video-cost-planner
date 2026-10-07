@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #07080d;
+  --color-ink: #05060b;
   --color-panel: #0e1018;
   --color-line: rgba(255, 255, 255, 0.09);
   --color-accent: #8b7cff;
+  --color-cyan: #22d3ee;
   --color-accent2: #38e1c6;
   --color-muted: #9aa0b4;
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -17,10 +18,27 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   background-image:
-    radial-gradient(60rem 30rem at 15% -10%, rgba(139, 124, 255, 0.18), transparent 60%),
-    radial-gradient(50rem 28rem at 95% 0%, rgba(56, 225, 198, 0.12), transparent 60%);
-  background-repeat: no-repeat;
+    radial-gradient(60rem 30rem at 15% -10%, rgba(139, 124, 255, 0.22), transparent 60%),
+    radial-gradient(50rem 28rem at 95% 0%, rgba(34, 211, 238, 0.16), transparent 60%),
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: auto, auto, 44px 44px, 44px 44px;
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
 }
+/* Control-room hero */
+.hero-stage { position: relative; overflow: hidden; border-radius: 1.5rem; border: 1px solid rgba(34,211,238,.25);
+  background: radial-gradient(40rem 20rem at 80% 0%, rgba(139,124,255,.28), transparent 60%), linear-gradient(180deg, rgba(14,16,24,.9), rgba(5,6,11,.9));
+  box-shadow: 0 0 0 1px rgba(139,124,255,.12), 0 30px 80px -30px rgba(34,211,238,.35); }
+.hero-stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px); }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .35; mix-blend-mode: screen; }
+.neon-text { background: linear-gradient(90deg, #22d3ee, #8b7cff 60%, #e879f9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.rec-dot { width: .55rem; height: .55rem; border-radius: 50%; background: #ff4d6d; box-shadow: 0 0 10px #ff4d6d; animation: rec 1.4s ease-in-out infinite; }
+@keyframes rec { 50% { opacity: .25; } }
+.meter { height: .4rem; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+.meter > i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #22d3ee, #8b7cff); animation: fill 2.4s ease-out both; }
+@keyframes fill { from { width: 0; } }
+.glass:hover { box-shadow: 0 0 0 1px rgba(34,211,238,.35), 0 18px 50px -24px rgba(34,211,238,.5); }
 .glass {
   background: linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0.025));
   border: 1px solid var(--color-line);
@@ -40,7 +58,7 @@ select.field option { background: #12141d; color: #eceef7; }
   border: 1px solid var(--color-line); background: rgba(255,255,255,0.06); color: inherit; transition: background .15s, transform .15s;
 }
 .btn:hover { background: rgba(255,255,255,0.11); }
-.btn-primary { background: linear-gradient(135deg, #8b7cff, #5b8cff); border-color: transparent; color: #fff; }
+.btn-primary { background: linear-gradient(135deg, #8b7cff, #22b8e8); box-shadow: 0 0 24px -6px rgba(34,211,238,.6); border-color: transparent; color: #fff; }
 .btn-primary:hover { background: linear-gradient(135deg, #9c8fff, #6c9aff); }
 .prose-site p, .prose-site li { color: #c3c7d8; line-height: 1.7; }
 .prose-site h2 { font-size: 1.35rem; font-weight: 700; margin: 2rem 0 0.75rem; }

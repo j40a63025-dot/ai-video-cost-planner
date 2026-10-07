@@ -165,10 +165,19 @@ export function Home({ l }: { l: Locale }) {
   return (
     <Shell locale={l} altHref={path(l === "en" ? "es" : "en")}>
       <JsonLd data={ld} />
-      <section className="pb-6 pt-4 sm:pt-10">
-        <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-6xl">{t.heroTitle}</h1>
-        <p className="mt-4 max-w-2xl text-lg text-muted">{t.heroSub}</p>
-        <p className="mt-4 text-sm"><span className="rounded-full border border-accent2/40 px-3 py-1 text-accent2">{t.pricesUpdated}: {fmtDate(l)}</span></p>
+      <section className="hero-stage mt-2 p-6 sm:p-12">
+        {/* TODO: <img src="/img/hero.webp" className="hero-img" alt="" aria-hidden /> cuando estén las imágenes de Flow */}
+        <div className="relative z-10">
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-cyan"><span className="rec-dot" aria-hidden /> LIVE · {t.pricesUpdated}: {fmtDate(l)}</div>
+          <h1 className="neon-text mt-5 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">{t.heroTitle}</h1>
+          <p className="mt-5 max-w-2xl text-lg text-[#c3c7d8]">{t.heroSub}</p>
+          <div className="mt-8 grid max-w-xl gap-3 font-mono text-xs text-muted" aria-hidden>
+            {["VEO", "KLING", "SORA"].map((m, i) => (
+              <div key={m} className="flex items-center gap-3"><span className="w-12">{m}</span><div className="meter flex-1"><i style={{ width: `${[78, 54, 91][i]}%` }} /></div></div>
+            ))}
+          </div>
+          <Link href={toolPath(l, TOOL_IDS[0])} className="btn btn-primary mt-8">{t.openTool} →</Link>
+        </div>
       </section>
       <section aria-label={t.tools} className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {TOOL_IDS.map((id, i) => (
